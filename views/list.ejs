@@ -1,30 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>List</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="css/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <h2>Value is <%= kinOfdDay %></h2>
 
-    <ul>
-      
- 
+<head>
+  <title>List</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
 
-    <% for (var i=0;i<newListItems.length;i++){  %>
-    <li><%= newListItems[i] %></li>
-    <% }  %>
-
-    </ul>
+<body>
 
 
-    <form action="/" method="post">
 
-        <input type="text" name="newItem">
-        <button type="submit">Submit</button>
-    </form>
+  <div class="box" id="heading">
+    <h2>Value is <%= kinOfdDay %>
+    </h2>
+  </div>
 
-  </body>
+
+   <!-- Item List  -->
+
+  <div class="box">
+    <% for (let i=0;i<newListItems.length;i++){ %>
+      <div class="item">
+        <input type="checkbox">
+        <p><%= newListItems[i] %>   </p>
+      </div>
+      <% } %>
+
+
+       <!-- Form  -->
+      <form action="/" method="post">
+
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button type="submit">+</button>
+      </form>
+
+  </div>
+
+
+
+
+
+</body>
+
 </html>

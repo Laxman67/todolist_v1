@@ -5,11 +5,12 @@ const app = express();
 
 //Global Variable
 
-let items = ["buy food", "cook food", "eat food"];
+let items = ["Buy Food", "Cook food", "Eat Food"];
 
 app.set("view engine", "ejs");
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"))
 
 
 
