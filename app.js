@@ -1,5 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const getDate = require("./date");
+const date = require(__dirname + "/date");
+
+
 
 const app = express();
 
@@ -16,21 +20,14 @@ let workItems = ["ok"];
 
 // Send File
 app.get("/welcome", function (req, res) {
+
   res.sendFile(__dirname + "/welcome.html");
+
 });
 
 app.get("/", function (req, res) {
-  let today = new Date();
 
-  let options = {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    // year: "numeric",
-  };
-
-  let day = today.toLocaleDateString("en-US", options);
-
+  let day = date.getDate();
   res.render("list", {
     ListTitle: day,
     newListItems: items,
@@ -56,7 +53,6 @@ app.get("/work", function (req, res) {
     ListTitle: "Work",
     newListItems: workItems,
   });
-    
 });
 
 app.post("/work", function (req, res) {
@@ -65,11 +61,9 @@ app.post("/work", function (req, res) {
   res.redirect("/work");
 });
 
-
-app.get("/about", function (req,res) {
-  
+app.get("/about", function (req, res) {
   res.render("about");
-})
+});
 app.listen("3000", function (req, res) {
   console.log("Running on Port 3000");
 });
